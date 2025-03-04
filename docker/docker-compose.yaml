@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./varlib:/var/lib/letsencrypt
+    command: renew --noninteractive --agree-tos --post-hook "nginx -s reload"
